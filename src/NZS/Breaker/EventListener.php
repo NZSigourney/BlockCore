@@ -17,7 +17,7 @@ use NZS\Breaker\Main;
 class EventListener implements Listener
 {
     public $plugin;
-    public static $instance = null;
+    private static $instance = null;
 
     public function __construct(Main $plugin)
     {
