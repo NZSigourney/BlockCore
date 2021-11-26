@@ -3,7 +3,8 @@
 
 namespace NZS\Breaker;
 
-use pocketmine\{Player, Server};
+use pocketmine\Player;
+use pocketmine\Server;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
