@@ -1,2 +1,2 @@
 # BlockCore
-BlockCore For Acidisland, Sb, LavaIsland.
+BlockCore For Acidisland, Sb, LavaIsland
