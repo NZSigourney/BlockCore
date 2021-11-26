@@ -35,8 +35,8 @@
 
      public function onQuit(PlayerQuitEvent $ev){
         $player = $ev->getPlayer();
-        file_put_contents($this->getDataFolder() . "EXP.yml", yaml_emit($this->getPlugin()->point));
-        file_put_contents($this->getDataFolder() . "Level.yml", yaml_emit($this->getPlugin()->level));
+        file_put_contents($this->getDataFolder() . "EXP.yml", yaml_emit($this->point));
+        file_put_contents($this->getDataFolder() . "Level.yml", yaml_emit($this->level));
     }
 
      public function createData(Player $player){

@@ -30,7 +30,7 @@ class EventListener implements Listener
         /**$this->plugin->point->set($player->getName(), 0);
         $this->plugin->point->save();*/
         //$this->getPlugin()->taodiem($player);
-        self::getInstance()->getLogger()->critical(Self::getInstance()->getMotd() . "§b Added Point (".$this->plugin->point[$player->getName()]." to Point.yml success");
+        Server::getInstance()->getLogger()->critical(Self::getInstance()->getMotd() . "§b Added Point (".$this->plugin->point[$player->getName()]." to Point.yml success");
     }
 
     
