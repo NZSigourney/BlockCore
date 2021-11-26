@@ -11,7 +11,8 @@
  use pocketmine\plugin\PluginBase;
  use pocketmine\event\Listener;
  use pocketmine\event\player\PlayerQuitEvent;
- use pocketmine\{Player, Server};
+use pocketmine\Player;
+use pocketmine\Server;
 
  class Main extends PluginBase implements Listener{
      public $point;
