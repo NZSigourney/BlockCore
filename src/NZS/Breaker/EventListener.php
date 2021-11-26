@@ -46,12 +46,14 @@ class EventListener implements Listener
     public function onChat(PlayerChatEvent $ev){
         $p = $ev->getPlayer();
         $m = $ev->getMessage();
-        $motd = $this->getPlugin()->getPoint($p);
+        $motd = $this->getPlugin()->getExp($p);
         if($m == "xemdiem"){
             $mess = str_replace("xemdiem", "******", $m);
             $p->chat($mess);
-            $p->sendMessage("§l§f[ ".self::getInstance()->getMotd()."§f] §bYour Score: §e". $motd);
+            $p->sendMessage("§l§f[§aBlock§cScore§f] §bYour Score: §e". $motd);
             //return $m;
+        }else{
+            return $m;
         }
 
         if($m == "lencap"){
@@ -70,6 +72,8 @@ class EventListener implements Listener
             }elseif($getExp < 10){
                 $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
             }
+        }else{
+            return $m;
         }
     }
 
