@@ -1,8 +1,6 @@
 name: BlockCore
 main: NZS\Breaker\Main
-api: [3.22.0, 3.24.2, 3.0.0]
-mcpe-protocol: 471
+api: [3.25.4]
 version: 1.5
-sources: BlockCore-BETA
 author: NZS
 descriptions: Core for block (Sb, AcidIsland)
