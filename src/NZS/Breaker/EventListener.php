@@ -19,6 +19,10 @@ class EventListener implements Listener
     public $plugin;
     private static $instance = null;
 
+    public static function getInstance(){
+		return self::$instance;
+	}
+
     public function __construct(Main $plugin)
     {
         $this->plugin = $plugin;
