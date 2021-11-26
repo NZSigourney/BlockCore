@@ -40,7 +40,7 @@ class EventListener implements Listener
 
     public function onChat(PlayerChatEvent $ev){
         $p = $ev->getPlayer();
-        $m = $p->getMessage();
+        $m = $ev->getMessage();
         $motd = $this->getPlugin()->getPoint($p);
         if($m == "xemdiem"){
             $mess = str_replace("xemdiem", "******", $m);
