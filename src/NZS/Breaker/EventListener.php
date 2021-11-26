@@ -16,7 +16,7 @@ use NZS\Breaker\Main;
 
 class EventListener implements Listener
 {
-    public $plugin, $player;
+    public $plugin;
 
     public function __construct(Main $plugin)
     {
@@ -70,6 +70,7 @@ class EventListener implements Listener
 
     public function onBreak(BlockBreakEvent $ev){
         $p = $ev->getPlayer();
+        $player = $ev->getPlayer();
         $block = $ev->getBlock();
         $PADiamond = 278;
         $PAGold = 285;
