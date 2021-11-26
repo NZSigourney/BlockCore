@@ -83,7 +83,7 @@ class EventListener implements Listener
         $PAStone = 274;
         $PAWooden = 270;
 
-        if($p->getInventory()->getItemInHand()->getItem() == $PADiamond)
+        if($p->getInventory()->getItemInHand()->getId() == $PADiamond)
         {
 
             if($block->getId() == 56 || $block->getId() == 129) {
@@ -202,7 +202,7 @@ class EventListener implements Listener
             }
         }
 
-        if($p->getInventory()->getItemInHand()->getItem() == $PAGold || $p->getInventory()->getItemInHand()->getItem() == $PAIron || $p->getInventory()->getItemInHand()->getItem() == $PAStone || $p->getInventory()->getItemInHand()->getItem() == $PAWooden)
+        if($p->getInventory()->getItemInHand()->getId() == $PAGold || $p->getInventory()->getItemInHand()->getId() == $PAIron || $p->getInventory()->getItemInHand()->getId() == $PAStone || $p->getInventory()->getItemInHand()->getId() == $PAWooden)
         {
             if($block->getId() == 56 || $block->getId() == 129)
             {
