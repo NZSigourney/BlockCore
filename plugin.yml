@@ -1,6 +1,6 @@
 name: BlockCore
 main: NZS\Breaker\Main
 api: [3.25.4]
-version: 2
+version: 2.5
 author: NZS
 descriptions: Core for block (Sb, AcidIsland)
