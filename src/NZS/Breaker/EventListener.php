@@ -69,13 +69,12 @@ class EventListener implements Listener
             $p->chat($mess);
             $p->sendMessage("§l§f[ ".self::getInstance()->getMotd()."§f] §bYour Score: §e". $motd);
             if($getExp != 10){
+                $this->getPlugin()->addLevel($p);
                 $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
                 $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c100!");
             }elseif($getExp < 10){
                 $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
             }
-        }else{
-            return $m;
         }
     }
 
