@@ -7,7 +7,7 @@ use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\level\Level;
@@ -34,7 +34,24 @@ class EventListener implements Listener
 
     public function onJoin(PlayerJoinEvent $ev){
         $player = $ev->getPlayer();
-        $this->getPlugin()->createData($player);
+        $pickaxe = Item::get(274,0,1);
+        $pickaxe->setCustomName("§l§bDynasty's §cLava§a Pickaxe");
+        $pickaxe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Pickaxe =))"));
+        $lava = Item::get(11,0,1);
+        $water = Item::get(10,0,1);
+        $axe = Item::get(275,0,1);
+        $axe->setCustomName("§l§bDynasty's §cLava§a Axe");
+        $axe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Axe =))"));
+        $inv = $player->getInventory();
+        if($player->HasPlayedBefore() == true){   
+            // Write when Player already played
+        }else{
+            $this->getPlugin()->createData($player);
+            $inv->addItem($pickaxe);
+            $inv->addItem($lava);
+            $inv->addItem($water);
+            $inv->addItem($axe);
+        }
         /**$this->plugin->point->set($player->getName(), 0);
         $this->plugin->point->save();*/
         //$this->getPlugin()->taodiem($player);
@@ -181,7 +198,7 @@ class EventListener implements Listener
                         $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
                         break;
                     case 3:
-                        $this->getPlugin()->addPoint($p, );
+                        $this->getPlugin()->addExp($p);
                         $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
                         $drops = array();
                         $drops[] = Item::get(175,0, 4);
@@ -207,6 +224,7 @@ class EventListener implements Listener
                     }
                 }
             }
+
             if($p->getInventory()->getItemInHand()->getId() == $PAGold || $p->getInventory()->getItemInHand()->getId() == $PAIron || $p->getInventory()->getItemInHand()->getId() == $PAStone || $p->getInventory()->getItemInHand()->getId() == $PAWooden)
             {
                 if($block->getId() == 56 || $block->getId() == 129)
@@ -307,8 +325,10 @@ class EventListener implements Listener
                     }
                 }
             }
-        }else{
-            $p->sendMessage("Qua LAVA mà đào đi đũy ngựa!");
+        }elseif($level == "Lobby" || $level == "spawn" || $level == "SanBongDa" || "pvp2"){
+            //$p->sendMessage("Qua LAVA mà đào đi đũy ngựa!");
+            $ev->setCancelled();
+            //if($ev->isCancelled);
         }
 
         
