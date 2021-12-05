@@ -1,5 +1,8 @@
 <?php
 
+/** EventListener Version 2
+ * Remake by NZS
+ */
 
 namespace NZS\Breaker;
 
@@ -110,311 +113,142 @@ class EventListener implements Listener
         if($level == $world){
             $p->getLevel()->setTime(0);
             if($p->getInventory()->getItemInHand()->getId() == $PADiamond){
-
-            if($block->getId() == 56 || $block->getId() == 129) {
-                switch (mt_rand(1, 15)) {
-                    case 1:
+                //if($block->getId() == 56 || $block->getId() == 129) {
+                switch($block->getId()){
+                    case 56:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 2);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 2:
+                    case 129:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 8);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 3:
+                    case 15:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 4);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 4:
+                    case 75:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 6);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 5:
+                    case 14:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 5);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 6:
+                    case 21:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 7);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 7:
+                    case 16:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 8);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 8:
+                    case 73:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b " . $this->getPlugin()->seePoint($player) . " §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175, 0, 9);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . rand(1, 5) . "§c " . Item::get(175)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                 }
-            }elseif($block->getId() == 15 || $block->getId() == 75 || $block->getId() == 14 || $block->getId() == 21 || $block->getId() == 16 || $block->getId() == 73)
+            }elseif($p->getInventory()->getItemInHand()->getId() == $PAGold || $p->getInventory()->getItemInHand()->getId() == $PAIron || $p->getInventory()->getItemInHand()->getId() == $PAStone || $p->getInventory()->getItemInHand()->getId() == $PAWooden)
             {
-                switch(mt_rand(1, 3)){
-                    case 1:
-                        $this->getPlugin()->addPoint($p, 1);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 1);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 2:
+                switch($block->getId()){
+                    case 56:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175,0, 2);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 2)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 3:
+                    case 129:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175,0, 4);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 2)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 4:
+                    case 15:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175,0, 6);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    case 5:
+                    case 75:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
                         $drops = array();
-                        $drops[] = Item::get(175,0, 5);
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
-                    }
+                    case 14:
+                        $this->getPlugin()->addExp($p);
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $drops = array();
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
+                        $ev->setDrops($drops);
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        break;
+                    case 21:
+                        $this->getPlugin()->addExp($p);
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $drops = array();
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
+                        $ev->setDrops($drops);
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        break;
+                    case 16:
+                        $this->getPlugin()->addExp($p);
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $drops = array();
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
+                        $ev->setDrops($drops);
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        break;
+                    case 73:
+                        $this->getPlugin()->addExp($p);
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $drops = array();
+                        $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
+                        $ev->setDrops($drops);
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        break;
                 }
-            }
-
-            if($p->getInventory()->getItemInHand()->getId() == $PAGold || $p->getInventory()->getItemInHand()->getId() == $PAIron || $p->getInventory()->getItemInHand()->getId() == $PAStone || $p->getInventory()->getItemInHand()->getId() == $PAWooden)
-            {
-                if($block->getId() == 56 || $block->getId() == 129)
-                {
-                    switch(mt_rand(1, 12)){
-                    case 1:
-                        $this->getPlugin()->addPoint($p, 1);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 1);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 2:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 2);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 3:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 4);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 4:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 6);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 5:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 5);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 6:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 7);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    }
-                }elseif($block->getId() == 15 || $block->getId() == 75 || $block->getId() == 14 || $block->getId() == 21 || $block->getId() == 16 || $block->getId() == 73)
-                {
-                    switch(mt_rand(1, 3)){
-                        case 1:
-                        $this->getPlugin()->addPoint($p, 1);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 1);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                        case 2:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 2);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 3:
-                        $this->getPlugin()->addPoint($p, );
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 4);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 4:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 6);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    case 5:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-                        $drops = array();
-                        $drops[] = Item::get(175,0, 5);
-                        $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-                        break;
-                    }
-                }
-            }
-        }elseif($level == "Lobby" || $level == "spawn" || $level == "SanBongDa" || "pvp2"){
-            //$p->sendMessage("Qua LAVA mà đào đi đũy ngựa!");
-            $ev->setCancelled();
-            //if($ev->isCancelled);
-        }
-
-        
-        
-        # Random Ore
-
-        /**$block = $event->getBlock();
-        $water = false;
-        $lava = false;
-        for ($i = 2; $i <= 5; $i++) {
-            $nearBlock = $block->getSide($i);
-            if ($nearBlock instanceof Water) {
-                $water = true;
-            } else if ($nearBlock instanceof Lava || $nearBlock instanceof Fence) {
-                $lava = true;
-            }
-            if ($water && $lava) {
-                $id = mt_rand(1, 65);
-                switch ($id) {
-                    case 2;
-                        $newBlock = new Iron();
-                        break;
-                    case 4;
-                        $newBlock = new Gold();
-                        break;
-                    case 6;
-                        $newBlock = new Emerald();
-                        break;
-                    case 8;
-                        $newBlock = new Coal();
-                        break;
-                    case 10;
-                        $newBlock = new Redstone();
-                        break;
-                    case 12;
-                        $newBlock = new Diamond();
-                        break;
-					case 14;
-                        $newBlock = new Lapis();
-                        break;	
-						case 16;
-                        $newBlock = new Block(15);
-                        break;	
-						case 19;
-                        $newBlock = new Block(21);
-					
-                        break;	
-						case 21;
-                        $newBlock = new Block(14);
-                        break;	
-							case 27;
-                        $newBlock = new Block(15);
-                        break;	
-							case 29;
-                        $newBlock = new Block(56);
-                        break;
-                        case 25;
-                        $newBlock = new Block(73);
-                        break;	
-							case 28;
-                        $newBlock = new Block(129);
-                        break;	
-							case 32;
-                        $newBlock = new Block(153);
-                        break;	
-                    default:
-                        $newBlock = new Cobblestone();
-                }
-                $block->getLevel()->setBlock($block, $newBlock, true, false);
-                return;
             }
         }
-
-        /**if($block->getId() == 16 || $block->getId() == 73)
-        {
-            $this->getPlugin()->addPoint($p, mt_rand(1, 10));
-            $p->sendMessage("§l§f[".Server::getInstance()->getMotd()."§f]§b ".$this->getPlugin()->seePoint($player)." §aAdded to your Vault!");
-            $drops = array();
-            $drops[] = Item::get(175,0, rand(1,5));
-            /**switch(mt_rand(1,10)){
-                case < 30:
-                    // 25 Percent
-                break;
-            }
-            $ev->setDrops($drops);
-            $p->sendPopup("§l§f[".Server::getInstance()->getMotd()."§f]§a Added§b ".rand(1,5)."§c ".Item::get(175)->getName()."§a To your Inventory!");
-        }*/
     }
 }
