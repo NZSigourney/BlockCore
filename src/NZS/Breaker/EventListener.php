@@ -81,7 +81,7 @@ class EventListener implements Listener
             $mess = str_replace("lencap", "******", $m);
             $getExp = $this->getPlugin()->getExp($p);
             $getLv = $this->getPlugin()->getLVPlayer($p);
-            $max = $getExp*1000
+            $max = $getExp*1000;
             $nextLv = $getLv + 1;
             $p->chat($mess);
             $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ."§f/§a Level:§c " . $getLv);
