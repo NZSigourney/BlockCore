@@ -41,7 +41,7 @@ class EventListener implements Listener
         $pickaxe->setCustomName("§l§bDynasty's §cLava§a Pickaxe");
         $pickaxe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Pickaxe =))"));
         $lava = Item::get(11,0,1);
-        $water = Item::get(10,0,1);
+        $water = Item::get(9,0,1);
         $axe = Item::get(275,0,1);
         $axe->setCustomName("§l§bDynasty's §cLava§a Axe");
         $axe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Axe =))"));
@@ -55,6 +55,7 @@ class EventListener implements Listener
             $inv->addItem($water);
             $inv->addItem($axe);
         }
+        $this->getPlugin()->createData($player);
         /**$this->plugin->point->set($player->getName(), 0);
         $this->plugin->point->save();*/
         //$this->getPlugin()->taodiem($player);
@@ -88,7 +89,7 @@ class EventListener implements Listener
             $nextLv = $getLv + 1;
             $p->chat($mess);
             $p->sendMessage("§l§f[ ".self::getInstance()->getMotd()."§f] §bYour Score: §e". $motd);
-            if($getExp != 10){
+            if($getExp = 10){
                 $this->getPlugin()->addLevel($p);
                 $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
                 $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c100!");
@@ -117,67 +118,67 @@ class EventListener implements Listener
                 switch($block->getId()){
                     case 56:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 129:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 15:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 75:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 14:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 21:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 16:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 73:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 5)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                 }
             }elseif($p->getInventory()->getItemInHand()->getId() == $PAGold || $p->getInventory()->getItemInHand()->getId() == $PAIron || $p->getInventory()->getItemInHand()->getId() == $PAStone || $p->getInventory()->getItemInHand()->getId() == $PAWooden)
@@ -185,7 +186,7 @@ class EventListener implements Listener
                 switch($block->getId()){
                     case 56:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
@@ -193,7 +194,7 @@ class EventListener implements Listener
                         break;
                     case 129:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
@@ -201,51 +202,51 @@ class EventListener implements Listener
                         break;
                     case 15:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 75:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 14:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 21:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 16:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                     case 73:
                         $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b " . $this->getPlugin()->getExp($p) . " §ais Currently EXP!");
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $this->getPlugin()->getExp());
                         $drops = array();
                         $drops[] = Item::get(175, 0, mt_rand(1, 2)*2);
                         $ev->setDrops($drops);
-                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
                         break;
                 }
             }
