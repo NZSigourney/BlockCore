@@ -61,7 +61,7 @@
          return $this->point["EXP"][strtolower($player->getName())];
      }
 
-     public function getLevel(Player $player){
+     public function getLVPlayer(Player $player){
          return $this->level["LEVEL"][strtolower($player->getName())];
      }
  }

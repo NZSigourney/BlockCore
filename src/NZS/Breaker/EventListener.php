@@ -73,28 +73,94 @@ class EventListener implements Listener
         if($m == "xemdiem"){
             $mess = str_replace("xemdiem", "******", $m);
             $p->chat($mess);
-            $p->sendMessage("§l§f[§aBlock§cScore§f] §bYour Score: §e". $motd);
+            $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ."§f/§a Level:§c ". $this->getPlugin()->getLVPlayer($p));
             //return $m;
-        }else{
-            return $m;
         }
 
         if($m == "lencap"){
             $mess = str_replace("lencap", "******", $m);
-            $max = 100;
-            $getExp = $this->getPlugin()->point[$p->getName()];
-            $getLv = $this->getPlugin()->level[$p->getName()];
-            //$getExp = $this->getPlugin()->getExp($p);
-            //$getLv = $this->getPlugin()->getLevel($p);
+            $getExp = $this->getPlugin()->getExp($p);
+            $getLv = $this->getPlugin()->getLVPlayer($p);
+            $max = $getExp*1000
             $nextLv = $getLv + 1;
             $p->chat($mess);
-            $p->sendMessage("§l§f[ ".self::getInstance()->getMotd()."§f] §bYour Score: §e". $motd);
-            if($getExp = 10){
+            $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ."§f/§a Level:§c " . $getLv);
+            if($getExp >= 100){
                 $this->getPlugin()->addLevel($p);
                 $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c100!");
-            }elseif($getExp < 10){
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 100){
                 $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 200){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 200){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 300){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 300){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 400){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 400){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 500){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 500){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 600){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 600){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 700){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 700){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 800){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 800){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp >= 900){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+            }elseif($getExp < 900){
+                $p->sendMessage("§l§cDo not enough EXP for next Level! §f(§b".$nextLv."§f)");               
+            }
+
+            if($getExp = 1000){
+                $this->getPlugin()->addLevel($p);
+                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
+                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
             }
         }
     }
