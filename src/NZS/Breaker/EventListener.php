@@ -161,6 +161,9 @@ class EventListener implements Listener
                 $this->getPlugin()->addLevel($p);
                 $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
                 $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
+                return true;
+            }else{
+                return false;
             }
         }
     }
