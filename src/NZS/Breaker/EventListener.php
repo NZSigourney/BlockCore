@@ -56,10 +56,6 @@ class EventListener implements Listener
             $inv->addItem($axe);
             $this->getPlugin()->createData($player);
         }
-        /**$this->plugin->point->set($player->getName(), 0);
-        $this->plugin->point->save();*/
-        //$this->getPlugin()->taodiem($player);
-        //Server::getInstance()->getLogger()->critical(Self::getInstance()->getMotd() . "§b Added Point (".$this->plugin->point[$player->getName()]." to Point.yml success");
     }
 
     public function onChat(PlayerChatEvent $ev){
@@ -67,67 +63,8 @@ class EventListener implements Listener
         $m = $ev->getMessage();
         $motd = $this->getPlugin()->getExp($p);
         if($m == "xemdiem"){
-            //$mess = str_replace("xemdiem", "******", $m);
-            //$p->chat($mess);
             $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ." §f/§a Level:§c ". $this->getPlugin()->getLVPlayer($p));
-            //return $m;
-        }
-
-        if($m == "lencap"){
-            //$mess = str_replace("lencap", "******", $m);
-            $getExp = $this->getPlugin()->getExp($p);
-            $getLv = $this->getPlugin()->getLVPlayer($p);
-            $max = 10;
-            $nextLv = $getLv + 1;
-            //$p->chat($mess);
-            $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ."§f/§a Level:§c " . $getLv);
-            if($getExp >= 100){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 200){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 300){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 400){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 500){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 600){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 700){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 800){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp >= 900){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");
-            }elseif($getExp = 1000){
-                $this->getPlugin()->addLevel($p);
-                $p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c10§a, Next Level:§b ".$nextLv."§a!");
-                $p->sendPopup("§l§aPresent Level: §b".$getLv."§a/§c".$max."§a!");                
-            }elseif($getExp > 1000){
-                $this->getPlugin()->point["EXP"][strtolower($player->getName())] = 0;
-                $this->getPlugin()->level["LEVEL"][strtolower($player->getName())] = 0;
-            }else{
-                $p->sendMessage("§c Không đủ EXP!");
-            }
-        }
+        }        
     }
 
     public function onBreak(BlockBreakEvent $ev){
@@ -150,91 +87,72 @@ class EventListener implements Listener
                 //if($block->getId() == 56 || $block->getId() == 129) {
                 switch($block->getId()){
                     case 56:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 129:
-                        $this->getPlugin()->addExp($p);
-                        //$this->getPlugin()->addCoin($p, mt_rand(1,5)*2);
-                        //$p->sendPopup("§l§c §b+ ". $getBC);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);
-                        //$this->getPlugin()->addCoin($p, mt_rand(1, 5)*2);
-                        ///$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 15:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 75:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 14:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 21:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 16:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 73:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                 }
             }elseif($p->getInventory()->getItemInHand()->getId() == $PAGold || $p->getInventory()->getItemInHand()->getId() == $PAIron || $p->getInventory()->getItemInHand()->getId() == $PAStone || $p->getInventory()->getItemInHand()->getId() == $PAWooden)
             {
                 switch($block->getId()){
                     case 56:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 2)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 129:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§a Added§b " . mt_rand(1, 2)*2 . "§c " . Item::get(175,0,1)->getName() . "§a To your Inventory!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 15:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 75:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                       
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 14:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 21:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 16:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 73:
-                        $this->getPlugin()->addExp($p);
-                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f]§b§r§b+1 §aEXP §f-§a Total Exp: §c" . $exp);                        
-                        //$p->sendPopup("§l§f[" . Server::getInstance()->getMotd() . "§f]§r§a Added§b " . mt_rand(1, 5)*2 . "§cBCoin §a To your Vault!");
+                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                 }
             }
