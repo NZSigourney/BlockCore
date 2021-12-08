@@ -30,7 +30,7 @@ class lencap extends Command
     public function execute(CommandSender $player, string $cmdLabal, array $args)
     {
         if(!($player instanceof Player)){
-            $this->getServer()->getLogger()->critical("USE IN-GAME!");
+            Server::getInstance()->getLogger()->critical("USE IN-GAME!");
             return;
         }
         $getExp = $this->getMain()->getExp($player);
@@ -85,73 +85,75 @@ class lencap extends Command
                 break;
         }
 
-        if($getExp = 0){
+        if($getExp <= 0){
             $player->sendMessage("§c Không đủ EXP!");
-        }elseif($getExp > 0){
+            return false;
+        }else{
             if($getExp >= 50){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 200){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 300){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 400){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 500){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 750){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 900){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 1200){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp >= 1500){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp = 3200){
                 $this->getMain()->resetExp($player);
                 $this->getMain()->addLevel($player);
-                $player->$p->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
+                $player->sendMessage("§a§lLevel Up!, EXP:§b ".$getExp."§a/§c".$max."§a, Next Level:§b ".$nextLv."§a!");
                 Server::getInstance()->broadcastMessage("§l§f[".Server::getInstance()->getMotd()."§f]§r §aThống Lĩnh §e".$player->getName()."§a Đã thăng cấp Đến §b".$getLv." §f(§a". $dh ."§f)");
                 $this->getMain()->danhHieu($player, $dh);
             }elseif($getExp > 3200){
                 $player->sendMessage("§aMax Level!");
                 $this->getMain()->resetExp($player);
-            }                   
+            }  
+            return true;                 
         }        
     }
 }
