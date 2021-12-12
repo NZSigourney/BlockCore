@@ -41,7 +41,7 @@ class EventListener implements Listener
         $pickaxe->setCustomName("§l§bDynasty's §cLava§a Pickaxe");
         $pickaxe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Pickaxe =))"));
         $lava = Item::get(11,0,1);
-        $water = Item::get(9,0,1);
+        $water = Item::get(8,0,1);
         $axe = Item::get(275,0,1);
         $axe->setCustomName("§l§bDynasty's §cLava§a Axe");
         $axe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Axe =))"));
@@ -54,18 +54,18 @@ class EventListener implements Listener
             $inv->addItem($lava);
             $inv->addItem($water);
             $inv->addItem($axe);
-            $this->getPlugin()->createData($player);
         }
+        $this->getPlugin()->createData($player);
     }
 
-    public function onChat(PlayerChatEvent $ev){
+    /**public function onChat(PlayerChatEvent $ev){
         $p = $ev->getPlayer();
         $m = $ev->getMessage();
         $motd = $this->getPlugin()->getExp($p);
         if($m == "xemdiem"){
             $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ." §f/§a Level:§c ". $this->getPlugin()->getLVPlayer($p));
         }        
-    }
+    }*/
 
     public function onBreak(BlockBreakEvent $ev){
         $p = $ev->getPlayer();

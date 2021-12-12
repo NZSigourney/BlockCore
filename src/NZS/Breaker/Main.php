@@ -26,10 +26,10 @@ class Main extends PluginBase implements Listener{
         $this->getServer()->getLogger()->info($this->getServer()->getMotd() . "§c Enabled BlockScore V4.5 REMAKED BY NZSigourney");
         $this->saveResource("EXP.yml");
         $this->saveResource("LEVEL.yml");
-        $this->saveResource("DanhHieu\Rank.yml");
+        $this->saveResource("Rank.yml");
         $this->point = yaml_parse(file_get_contents($this->getDataFolder() . "EXP.yml"));
         $this->level = yaml_parse(file_get_contents($this->getDataFolder() . "Level.yml"));
-        $this->dhs = yaml_parse(file_get_contents($this->getDataFolder() . "DanhHieu\Rank.yml"));
+        $this->dhs = yaml_parse(file_get_contents($this->getDataFolder() . "Rank.yml"));
         //$this->coin = yaml_parse(file_get_contents($this->getDataFolder() . "Coin.yml"));
         $this->getServer()->getLogger()->notice("Created EXP.yml & Level.yml, Translated Language Vie #UNICODE!");
     }
@@ -37,7 +37,7 @@ class Main extends PluginBase implements Listener{
     public function onDisable(){
         file_put_contents($this->getDataFolder() . "EXP.yml", yaml_emit($this->point));
         file_put_contents($this->getDataFolder() . "Level.yml", yaml_emit($this->level));
-        file_put_contents($this->getDataFolder() . "DanhHieu\Rank.yml", yaml_emit($this->dhs));
+        file_put_contents($this->getDataFolder() . "Rank.yml", yaml_emit($this->dhs));
         sleep(3);
     }
 
@@ -45,7 +45,7 @@ class Main extends PluginBase implements Listener{
         $player = $ev->getPlayer();
         file_put_contents($this->getDataFolder() . "EXP.yml", yaml_emit($this->point));
         file_put_contents($this->getDataFolder() . "Level.yml", yaml_emit($this->level));
-        file_put_contents($this->getDataFolder() . "DanhHieu\Rank.yml", yaml_emit($this->dhs));
+        file_put_contents($this->getDataFolder() . "Rank.yml", yaml_emit($this->dhs));
     }
 
     public function createData(Player $player){
@@ -94,7 +94,7 @@ class Main extends PluginBase implements Listener{
         $this->point["EXP"][strtolower($player->getName())] = 0;
     }
 
-    public function danhHieu(Player $player, string $dh){
+    public function danhHieu(Player $player, array $dh){
         $this->dhs["DanhHieu"][strtolower($player->getName())] = $dh;
     }
 }

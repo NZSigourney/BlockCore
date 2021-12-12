@@ -2,6 +2,7 @@
 
 namespace NZS\Breaker\Commands;
 
+use http\Exception\InvalidArgumentException;
 use NZS\Breaker\Main;
 use pocketmine\command\{CommandSender, ConsoleCommandSender, Command};
 use pocketmine\{Player, Server};
@@ -27,7 +28,7 @@ class lencap extends Command
         return $this->plugin;
     }
 
-    public function execute(CommandSender $player, string $cmdLabal, array $args)
+    public function execute(CommandSender $player, string $dh, array $args)
     {
         if(!($player instanceof Player)){
             Server::getInstance()->getLogger()->critical("USE IN-GAME!");
@@ -39,9 +40,14 @@ class lencap extends Command
         $nextLv = $getLv + 1;
         //$oldLv = $getLevel - 1;
         $max = [50, 200, 300, 400, 500, 750, 900, 1200, 1500, 3200];
-        $dh = array();
-        $dh = [];
-
+        if($getExp == null || $getLv == null){
+            if(!$player->isOp()){
+                $player->sendMessage("Null!");
+                return true;
+            }else{
+                throw new InvalidArgumentException("Must be string|array!");
+            }
+        }
         switch($getLv){
             case 1:
                 $max = 50;
@@ -82,6 +88,9 @@ class lencap extends Command
             case 10:
                 $max = 3200;
                 $dh = "Thái Thượng Hoàng";
+                break;
+            default:
+                $dh = "Hào Kiệt";
                 break;
         }
 
