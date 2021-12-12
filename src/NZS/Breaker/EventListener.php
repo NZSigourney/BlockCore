@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** EventListener Version 2
  * Remake by NZS
  */
@@ -41,7 +43,7 @@ class EventListener implements Listener
         $pickaxe->setCustomName("§l§bDynasty's §cLava§a Pickaxe");
         $pickaxe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Pickaxe =))"));
         $lava = Item::get(11,0,1);
-        $water = Item::get(9,0,1);
+        $water = Item::get(8,0,1);
         $axe = Item::get(275,0,1);
         $axe->setCustomName("§l§bDynasty's §cLava§a Axe");
         $axe->setLore(array("§l§bDynasty's §cLava§aIslands\n§c•§r §aStart up Axe =))"));
@@ -54,18 +56,20 @@ class EventListener implements Listener
             $inv->addItem($lava);
             $inv->addItem($water);
             $inv->addItem($axe);
-            $this->getPlugin()->createData($player);
+            $this->getPlugin()->createDanhHieu($player, "Anh Hùng");
+            $this->getPlugin()->createExp($player);
+            $this->getPlugin()->createLevel($player);
         }
     }
 
-    public function onChat(PlayerChatEvent $ev){
+    /**public function onChat(PlayerChatEvent $ev){
         $p = $ev->getPlayer();
         $m = $ev->getMessage();
         $motd = $this->getPlugin()->getExp($p);
         if($m == "xemdiem"){
             $p->sendMessage("§l§f[§aBlock§cScore§f]§r §aYour EXP: §b". $motd ." §f/§a Level:§c ". $this->getPlugin()->getLVPlayer($p));
         }        
-    }
+    }*/
 
     public function onBreak(BlockBreakEvent $ev){
         $p = $ev->getPlayer();
@@ -87,35 +91,35 @@ class EventListener implements Listener
                 //if($block->getId() == 56 || $block->getId() == 129) {
                 switch($block->getId()){
                     case 56:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 129:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 15:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 75:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 14:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 21:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 16:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 73:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                 }
@@ -123,35 +127,35 @@ class EventListener implements Listener
             {
                 switch($block->getId()){
                     case 56:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 129:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 15:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 75:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 14:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 21:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 16:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                     case 73:
-                        $this->getPlugin()->addExp($p, mt_rand(1,10));
+                        $this->getPlugin()->setExp($p, mt_rand(1,10));
                         $p->sendMessage("§l§f[" . Server::getInstance()->getMotd() . "§f] §b§r§b+".mt_rand(1,10)." §aEXP §f-§a Total Exp: §c" . $exp);
                         break;
                 }

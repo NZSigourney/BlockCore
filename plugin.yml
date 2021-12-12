@@ -1,6 +1,9 @@
-name: BlockCore
+name: BlockCore-PM3
+version: 5.0
+api: 3.25.4
 main: NZS\Breaker\Main
-api: [3.25.4]
-version: 4.5-REMAKE
 author: NZS
-descriptions: Core for block (Sb, AcidIsland)
+description: Core Block for Lavaisland, AcidIsland, SkyBlock
+depend:
+  - FormAPI
+  - RandomOreWL

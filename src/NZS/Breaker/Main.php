@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * BLOCKSCORE
  * PARAMS @value
@@ -16,85 +18,74 @@ use pocketmine\utils\Config;
 use NZS\Breaker\Commands\lencap;
 
 class Main extends PluginBase implements Listener{
-    public $point;
-    public $level;
-    public $dhs;
+    //public $motd = $this->getServer()->getMotd();
 
     public function onEnable(): void{
         $this->getServer()->getCommandMap()->register("lvup", new lencap($this));
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getServer()->getLogger()->info($this->getServer()->getMotd() . "§c Enabled BlockScore V4.5 REMAKED BY NZSigourney");
-        $this->saveResource("EXP.yml");
-        $this->saveResource("LEVEL.yml");
-        $this->saveResource("DanhHieu\Rank.yml");
-        $this->point = yaml_parse(file_get_contents($this->getDataFolder() . "EXP.yml"));
-        $this->level = yaml_parse(file_get_contents($this->getDataFolder() . "Level.yml"));
-        $this->dhs = yaml_parse(file_get_contents($this->getDataFolder() . "DanhHieu\Rank.yml"));
-        //$this->coin = yaml_parse(file_get_contents($this->getDataFolder() . "Coin.yml"));
-        $this->getServer()->getLogger()->notice("Created EXP.yml & Level.yml, Translated Language Vie #UNICODE!");
+        @mkdir($this->getDataFolder(), 0744, true);
+        $this->exps = new Config($this->getDataFolder() . "EXP.yml", Config::YAML);
+        $this->lv = new Config($this->getDataFolder() . "Level.yml", Config::YAML);
     }
 
-    public function onDisable(){
-        file_put_contents($this->getDataFolder() . "EXP.yml", yaml_emit($this->point));
-        file_put_contents($this->getDataFolder() . "Level.yml", yaml_emit($this->level));
-        file_put_contents($this->getDataFolder() . "DanhHieu\Rank.yml", yaml_emit($this->dhs));
-        sleep(3);
-    }
-
-    public function onQuit(PlayerQuitEvent $ev){
-        $player = $ev->getPlayer();
-        file_put_contents($this->getDataFolder() . "EXP.yml", yaml_emit($this->point));
-        file_put_contents($this->getDataFolder() . "Level.yml", yaml_emit($this->level));
-        file_put_contents($this->getDataFolder() . "DanhHieu\Rank.yml", yaml_emit($this->dhs));
-    }
-
-    public function createData(Player $player){
-        if(!isset($this->point["EXP"][strtolower($player->getName())])){
-            $this->point["EXP"][strtolower($player->getName())] = 0;
+    public function createDanhHieu(Player $player, $dh){
+        if(!is_dir($this->getDataFolder() . "DanhHieu/")){
+            @mkdir($this->getDataFolder(), 0777, true);
         }
-
-        if(!isset($this->level["LEVEL"][strtolower($player->getName())])){
-            $this->level["LEVEL"][strtolower($player->getName())] = 0;
-        }
-
-        if(!isset($this->dhs["DanhHieu"][strtolower($player->getName())])){
-            $this->dhs["DanhHieu"][strtolower($player->getName())] = "Hào kiệt";
-        }
-
-        /**if(!file_exists($this->getDataFolder() . "Coin/".$player->getName().".yml")){
-            $this->coin = new Config($this->getDataFolder() . "Coin/".$player->getName().".yml", Config::YAML);
-            $this->coin->set("Score", 0);
-            $this->coin->save();
-        }*/
+        $this->dhs = new Config($this->getDataFolder() . "DanhHieu/" . strtolower($player->getName()) . ".yml", Config::YAML, ["NameTag" => $dh]);
+        //$this->dhs->set("NameTag", $dh);
+        //$this->dhs->save();
     }
 
-    public function addExp(Player $player, $rand){
-        //$rand = mt_rand(1,10);
-        $int = $this->point["EXP"][strtolower($player->getName())];
-        $this->point["EXP"][strtolower($player->getName())] = $rand + $int;
+    public function getDanhHieu(Player $player)
+    {
+        $dhs = new Config($this->getDataFolder() . "DanhHieu/" . strtolower($player->getName()) . ".yml");
+        return $dhs->getAll(true);
+        //return $this->dhs->get("NameTag");
     }
 
-    public function addLevel(Player $player){
-        $this->level["LEVEL"][strtolower($player->getName())]++;
+    public function setDanhHieu(Player $player, $dh){
+        $dhs = new Config($this->getDataFolder() . "DanhHieu/" . strtolower($player->getName()) . ".yml");
+        $dhs->set("NameTag", $dh);
+        $dh->save();
     }
 
-    public function getExp(Player $player){
-        return $this->point["EXP"][strtolower($player->getName())];
+    public function createExp(Player $player){
+        $this->exps->set($player->getName(), 0);
+        $this->exps->save();
     }
 
-    public function getLVPlayer(Player $player){
-        return $this->level["LEVEL"][strtolower($player->getName())];
+    public function setExp(Player $player, $exp){
+        $playerName = $player->getName();
+        $currentExp = $this->exps->get($playerName);
+        $this->exps->set($playerName, $exp + $currentExp);
+        $this->exps->save();
     }
 
-    public function getDH(Player $player){
-        return $this->dhs["DanhHieu"][strtolower($player->getName())];
+    public function getExp(Player $player)
+    {
+        return $this->exps->get($player->getName());
+    }
+
+    public function createLevel(Player $player){
+        $this->lv->set($player->getName(), 0);
+        $this->lv->save();
+    }
+
+    public function setLevel(Player $player, $lv){
+        $lvs = $this->lv->get($player->getName());
+        $this->lv->set($player->getName(), $lv + $lvs);
+        $this->lv->save();
     }
 
     public function resetExp(Player $player){
-        $this->point["EXP"][strtolower($player->getName())] = 0;
+        $max = $this->exps->get($player->getName());
+        $this->exps->set($player->getName(), 0);
+        $this->exps->save();
     }
 
-    public function danhHieu(Player $player, string $dh){
-        $this->dhs["DanhHieu"][strtolower($player->getName())] = $dh;
+    public function getLevels(Player $player){
+        return $this->lv->get($player->getName());
     }
 }
