@@ -156,6 +156,8 @@ class EventListener implements Listener
                         break;
                 }
             }
+        }else{
+            $ev->setCancelled(true);
         }
     }
 }
