@@ -42,7 +42,7 @@ class lencap extends Command
         //$oldLv = $getLevel - 1;
         $max = [50, 200, 300, 400, 500, 750, 900, 1200, 1500, 3200];
         $dh = [];
-        $dh = (string);
+        $dh = array();
 
         switch($getLv){
             case 1:
