@@ -4,11 +4,7 @@ BlockCore For Acidisland, Sb, LavaIsland
 - Added Point and rewards on Ore (Diamond, Coal, Iron....)
 - Only use by Limited Pickaxe
 
-#Commands
-We don't use commands like other plugins, Look:
-
-- just say "xemdiem" for look your score.
-- just say "lencap" you will be level up if you're enought EXP
+#Commands (UPDATE FEATURE SOON)
 
 #EXP & LEVEL (FEATURE UPDATING)
 In this Configuration's Default total Level is 10, with start Level from 0, List Level:
