@@ -5,7 +5,8 @@ namespace NZS\Breaker\Commands;
 use http\Exception\InvalidArgumentException;
 use NZS\Breaker\Main;
 use pocketmine\command\{CommandSender, Command};
-use pocketmine\{Player, Server};
+use pocketmine\player\Player;
+use pocketmine\Server;
 //use pocketmine\plugin\Plugin;
 
 class lencap extends Command
@@ -20,7 +21,8 @@ class lencap extends Command
     }
 
     public static function getInstance(){
-        return self::$instance();
+        $instance = self::$instance;
+        return $instance;
     }
 
     public function getMain(): Main
